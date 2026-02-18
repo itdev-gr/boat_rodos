@@ -1,9 +1,9 @@
 ---
 const destinations = [
-  { image: '/assets/img/destination/14.jpg', title: 'Rodos Rent Boat', href: '/rodos-rent-boat' },
-  { image: '/assets/img/destination/15.jpg', title: 'Rodos Boat Tours', href: '/rodos-boat-tours' },
-  { image: '/assets/img/destination/16.jpg', title: 'Private Boat Tours', href: '/private-boat-tours' },
-  { image: '/assets/img/destination/17.jpg', title: 'Rodos Boat Cruises', href: '/rodos-boat-cruises' },
+  { image: '/assets/img/destination/14.jpg', title: 'Rodos Rent Boat', meta: 'Rent a boat in Rhodes', href: '/rodos-rent-boat' },
+  { image: '/assets/img/destination/15.jpg', title: 'Rodos Boat Tours', meta: 'Guided boat tours', href: '/rodos-boat-tours' },
+  { image: '/assets/img/destination/16.jpg', title: 'Private Boat Tours', meta: 'Private experience', href: '/private-boat-tours' },
+  { image: '/assets/img/destination/17.jpg', title: 'Rodos Boat Cruises', meta: 'Cruise the coast', href: '/rodos-boat-cruises' },
 ];
 ---
 <section class="popular-destination-section section-padding bg-sky-50">
@@ -11,9 +11,8 @@ const destinations = [
     <div class="section-title-area">
       <div class="section-title wow fadeInUp" data-wow-delay=".1s">
         <span class="sub-title">Our Destination</span>
-        <h2>Our Top Location For<br />You Property</h2>
+        <h2>Live the<br />sailing life</h2>
       </div>
-      <a href="/rodos-boat-tours" class="theme-btn">Learn More <i class="bi bi-arrow-right"></i></a>
     </div>
     <div class="top-location-cards">
       {destinations.map((d, i) => (
@@ -22,7 +21,7 @@ const destinations = [
           <div class="top-location-card-overlay">
             <div class="top-location-card-text">
               <h3 class="top-location-card-title">{d.title}</h3>
-              <span class="top-location-card-meta">Hotel 1</span>
+              <span class="top-location-card-meta">{d.meta}</span>
             </div>
             <span class="location-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
           </div>

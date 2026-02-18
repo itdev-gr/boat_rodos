@@ -4961,11 +4961,7 @@ span {
 }
 .footer-widget-wrapper-new .single-widget-items {
   margin-top: 30px;
-}
-@media (max-width: 1199px) {
-  .footer-widget-wrapper-new .single-widget-items {
-    text-align: left !important;
-  }
+  text-align: left;
 }
 .footer-widget-wrapper-new .single-widget-items .widget-head {
   margin-bottom: 30px;
@@ -4985,12 +4981,7 @@ span {
   background-color: var(--theme);
 }
 .footer-widget-wrapper-new .single-widget-items .footer-content {
-  text-align: center;
-}
-@media (max-width: 1199px) {
-  .footer-widget-wrapper-new .single-widget-items .footer-content {
-    text-align: left;
-  }
+  text-align: left;
 }
 .footer-widget-wrapper-new .single-widget-items .footer-content h3 {
   color: var(--white);
@@ -9369,23 +9360,36 @@ input.main-search-input::placeholder {
     opacity: 0;
     visibility: hidden;
     display: block !important;
-    border-radius: 0 0 5px 5px;
+    border-radius: 12px;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     color: var(--heading-color);
  }
   .cs_nav .cs_nav_list ul li:not(:last-child) a {
     position: relative;
-    border-bottom: 1px solid #eeeeee;
  }
   .cs_nav .cs_nav_list ul li:not(:last-child) a::after {
-    content: '';
+    display: none;
+ }
+  .cs_nav .cs_nav_list ul li.menu-item-has-children > a {
+    padding-right: 36px;
+ }
+  .cs_nav .cs_nav_list ul li.menu-item-has-children > a::after {
+    display: inline-block !important;
+    content: "\f285";
+    font-family: bootstrap-icons !important;
+    font-weight: 900;
     position: absolute;
-    height: 1px;
-    width: calc(100% - 40px);
-    left: 20px;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.1);
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: currentColor;
+    height: auto;
+    width: auto;
+    background: none;
+    left: auto;
+    bottom: auto;
  }
   .cs_nav .cs_nav_list ul li:hover ul {
     top: 0px;
@@ -9403,6 +9407,7 @@ input.main-search-input::placeholder {
   .cs_nav .cs_nav_list ul ul {
     top: 15px;
     left: 100%;
+    border-radius: 12px;
  }
   .cs-munu_toggle, .cs-munu_dropdown_toggle {
     display: none;
@@ -10057,7 +10062,7 @@ input.main-search-input::placeholder {
 .top-location-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: max(12px, calc((73.44px - 2%) / 3));
   margin-top: 30px;
 }
 @media (max-width: 1199px) {
