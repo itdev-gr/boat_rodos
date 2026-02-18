@@ -1,0 +1,103 @@
+---
+const posts = [
+  {
+    image: '/assets/img/destination/14.jpg',
+    title: 'ARCHON Yachting Engages in Industry Dialogue at Booking Manager Summit Zagreb',
+    category: '#NEWS',
+    href: '#',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'ARCHON Yachting Becomes Official Seanapps Dealer for Beneteau Group in Greece',
+    category: '#NEWS',
+    href: '#',
+  },
+  {
+    image: '/assets/img/destination/15.jpg',
+    title: 'ARCHON Yachting at Booking Manager Summit 2025',
+    category: '#NEWS',
+    href: '#',
+  },
+];
+---
+<section class="bg-sky-50 py-16">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <header class="mb-12">
+      <span class="text-sm font-normal uppercase tracking-wide text-gray-500">BLOG</span>
+      <h2 class="text-4xl font-bold text-gray-900 mt-1">News & tips</h2>
+    </header>
+
+    <div class="relative">
+      <div class="swiper blog-swiper">
+        <div class="swiper-wrapper">
+          {posts.map((post) => (
+            <div class="swiper-slide">
+              <a
+                href={post.href}
+                class="block rounded-lg overflow-hidden bg-white shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div class="aspect-video w-full overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt=""
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-5">
+                  <span class="text-xs uppercase tracking-wide text-gray-500">{post.category}</span>
+                  <h3 class="text-lg font-bold text-gray-900 mt-2 line-clamp-3">{post.title}</h3>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="blog-swiper-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-teal-500 text-white flex items-center justify-center cursor-pointer hover:bg-teal-600 transition-colors shadow-md"
+        aria-label="Previous"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="blog-swiper-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center cursor-pointer hover:bg-purple-700 transition-colors shadow-md"
+        aria-label="Next"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation } from 'swiper/modules';
+  import 'swiper/css';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector<HTMLElement>('.blog-swiper');
+    if (!el) return;
+
+    new Swiper(el, {
+      modules: [Navigation],
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      speed: 500,
+      navigation: {
+        nextEl: '.blog-swiper-next',
+        prevEl: '.blog-swiper-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
