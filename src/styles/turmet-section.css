@@ -10220,16 +10220,28 @@ input.main-search-input::placeholder {
   height: 80vh;
   transition: opacity 0.6s ease;
 }
+.charter-bases-nav.charter-bases-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 0;
+}
 .charter-bases-nav.loading {
   opacity: 0;
   visibility: hidden;
 }
-.charter-bases-nav .swiper-slide {
+.charter-bases-nav-card {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   cursor: pointer;
-  opacity: 0.4;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
-.charter-bases-nav .swiper-slide-active {
+.charter-bases-nav-card:hover {
   opacity: 1;
 }
 .charter-bases-nav .content .title {

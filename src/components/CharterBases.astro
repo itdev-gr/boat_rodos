@@ -35,26 +35,30 @@ const bases = [
       <div class="swiper-button-prev swiper-button-white"></div>
       <div class="swiper-button-next swiper-button-white"></div>
     </div>
-    <div class="swiper charter-bases-nav">
-      <div class="swiper-wrapper">
-        {bases.map((b) => (
-          <div class="swiper-slide">
-            <figure class="slide-bgimg" style={`background-image:url(${b.image})`}>
-              <img class="entity-img" src={b.image} alt={b.label} />
-            </figure>
-            <div class="content">
-              <p class="title">{b.label}</p>
-            </div>
+    <div class="charter-bases-nav charter-bases-nav-list" role="list">
+      {bases.slice(1).map((b, i) => (
+        <div
+          class="charter-bases-nav-card"
+          data-slot-index={i}
+          tabindex={0}
+          role="button"
+        >
+          <figure class="slide-bgimg" style={`background-image:url(${b.image})`} aria-hidden="true"></figure>
+          <div class="content">
+            <p class="title">{b.label}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
+<script define:vars={{ bases }}>
+  window.__CHARTER_BASES__ = bases;
+</script>
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Controller, Autoplay } from 'swiper/modules';
+  import { Navigation, Autoplay } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/navigation';
 
@@ -62,8 +66,26 @@ const bases = [
 
   document.addEventListener('DOMContentLoaded', () => {
     const mainEl = document.querySelector<HTMLElement>('.charter-bases-main');
-    const navEl = document.querySelector<HTMLElement>('.charter-bases-nav');
-    if (!mainEl || !navEl) return;
+    const navEl = document.querySelector<HTMLElement>('.charter-bases-nav-list');
+    const bases = (window as unknown as { __CHARTER_BASES__?: Array<{ image: string; label: string; href: string; caption: string }> }).__CHARTER_BASES__;
+    if (!mainEl || !navEl || !bases?.length) return;
+
+    const N = bases.length;
+
+    function updateNavList(realIndex: number) {
+      if (!navEl || !bases) return;
+      const cards = navEl.querySelectorAll<HTMLElement>('.charter-bases-nav-card');
+      cards.forEach((card, k) => {
+        const baseIndex = (realIndex + 1 + k) % N;
+        const b = bases[baseIndex];
+        if (!b) return;
+        const bg = card.querySelector<HTMLElement>('.slide-bgimg');
+        const titleEl = card.querySelector('.content .title');
+        if (bg) bg.style.backgroundImage = `url(${b.image})`;
+        if (titleEl) titleEl.textContent = b.label;
+        card.dataset.slotIndex = String(k);
+      });
+    }
 
     const mainSliderOptions = {
       loop: true,
@@ -74,7 +96,7 @@ const bases = [
       watchSlidesProgress: true,
       preloadImages: true,
       updateOnImagesReady: true,
-      modules: [Navigation, Controller, Autoplay],
+      modules: [Navigation, Autoplay],
       navigation: {
         nextEl: '.charter-bases-main .swiper-button-next',
         prevEl: '.charter-bases-main .swiper-button-prev',
@@ -84,6 +106,7 @@ const bases = [
           swiper.autoplay?.stop();
           swiper.el.classList.remove('loading');
           swiper.autoplay?.start();
+          updateNavList(swiper.realIndex);
         },
         imagesReady(swiper: InstanceType<typeof Swiper>) {
           swiper.el.classList.remove('loading');
@@ -95,7 +118,7 @@ const bases = [
           const activeSlide = swiper.slides[swiper.activeIndex];
           const cap = activeSlide?.querySelector('.caption');
           if (cap) cap.classList.add('show');
-          navSlider.slideTo(Math.max(0, swiper.realIndex - (navSlidesPerView - 1)));
+          updateNavList(swiper.realIndex);
         },
         progress(swiper: InstanceType<typeof Swiper>) {
           for (let i = 0; i < swiper.slides.length; i++) {
@@ -123,38 +146,19 @@ const bases = [
       },
     };
 
-    const navSlidesPerView = 5;
-    const navSliderOptions = {
-      loop: true,
-      loopAdditionalSlides: 10,
-      speed: 1000,
-      spaceBetween: 5,
-      slidesPerView: navSlidesPerView,
-      centeredSlides: false,
-      touchRatio: 0.2,
-      slideToClickedSlide: true,
-      direction: 'vertical' as const,
-      modules: [Controller],
-      on: {
-        init(swiper: InstanceType<typeof Swiper>) {
-          swiper.el.classList.remove('loading');
-        },
-        imagesReady(swiper: InstanceType<typeof Swiper>) {
-          swiper.el.classList.remove('loading');
-        },
-        click() {
-          mainSlider.autoplay?.stop();
-        },
-      },
-    };
-
     const mainSlider = new Swiper(mainEl, mainSliderOptions);
-    const navSlider = new Swiper(navEl, navSliderOptions);
 
-    mainSlider.controller.control = navSlider;
-    navSlider.controller.control = mainSlider;
-
-    navSlider.slideTo(Math.max(0, mainSlider.realIndex - (navSlidesPerView - 1)));
+    navEl.addEventListener('click', (e: Event) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.charter-bases-nav-card');
+      if (!card) return;
+      e.preventDefault();
+      const k = parseInt(card.dataset.slotIndex ?? '0', 10);
+      const realIndex = mainSlider.realIndex;
+      const targetIndex = (realIndex + 1 + k) % N;
+      mainSlider.autoplay?.stop();
+      mainSlider.slideToLoop(targetIndex);
+      mainSlider.autoplay?.start();
+    });
 
     const activeCaption = mainEl.querySelector('.caption');
     if (activeCaption) activeCaption.classList.add('show');
