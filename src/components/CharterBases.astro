@@ -1,0 +1,162 @@
+---
+const defaultCaption = "Read base tips and find suggested itineraries.";
+const bases = [
+  { image: '/assets/img/charter-bases-visual.png', label: 'Kos Island', href: '/charter-bases/kos-island', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Rhodes Island', href: '/charter-bases/rhodes-island', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Athens', href: '/charter-bases/athens-alimos-marina', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Mykonos island - Tourlos Marina', href: '/charter-bases/mykonos-island-tourlos-marina', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Lefkas - D Marin', href: '/charter-bases/lefkas-d-marin', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Lavrion - Olympic Marine', href: '/charter-bases/athens-lavrion-marina', caption: defaultCaption },
+  { image: '/assets/img/charter-bases-visual.png', label: 'Paros', href: '/charter-bases/paros', caption: defaultCaption },
+];
+---
+<section class="charter-bases-section section-padding bg-sky-50">
+  <div class="container">
+    <header class="charter-bases-header text-center">
+      <h2 class="charter-bases-title">Our charter bases in Greece.</h2>
+      <p class="charter-bases-subtitle">We have bases in Kos Marina, Rhodes Marina, Alimos Marina, Mykonos, Lavrion, Lefkas and Paros island. Read base tips and find suggested itineraries.</p>
+    </header>
+  </div>
+  <div class="charter-bases-sliders">
+    <div class="swiper charter-bases-main">
+      <div class="swiper-wrapper">
+        {bases.map((b) => (
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style={`background-image:url(${b.image})`}>
+              <img class="entity-img" src={b.image} alt={b.label} />
+            </figure>
+            <div class="content">
+              <p class="title">{b.label}</p>
+              <span class="caption">{b.caption}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </div>
+    <div class="swiper charter-bases-nav">
+      <div class="swiper-wrapper">
+        {bases.map((b) => (
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style={`background-image:url(${b.image})`}>
+              <img class="entity-img" src={b.image} alt={b.label} />
+            </figure>
+            <div class="content">
+              <p class="title">{b.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Controller, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+
+  const interleaveOffset = 0.5;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainEl = document.querySelector<HTMLElement>('.charter-bases-main');
+    const navEl = document.querySelector<HTMLElement>('.charter-bases-nav');
+    if (!mainEl || !navEl) return;
+
+    const mainSliderOptions = {
+      loop: true,
+      speed: 1000,
+      autoplay: { delay: 3000 },
+      loopAdditionalSlides: 10,
+      grabCursor: true,
+      watchSlidesProgress: true,
+      preloadImages: true,
+      updateOnImagesReady: true,
+      modules: [Navigation, Controller, Autoplay],
+      navigation: {
+        nextEl: '.charter-bases-main .swiper-button-next',
+        prevEl: '.charter-bases-main .swiper-button-prev',
+      },
+      on: {
+        init(swiper: InstanceType<typeof Swiper>) {
+          swiper.autoplay?.stop();
+          swiper.el.classList.remove('loading');
+          swiper.autoplay?.start();
+        },
+        imagesReady(swiper: InstanceType<typeof Swiper>) {
+          swiper.el.classList.remove('loading');
+          swiper.autoplay?.start();
+        },
+        slideChangeTransitionEnd(swiper: InstanceType<typeof Swiper>) {
+          const captions = swiper.el.querySelectorAll('.caption');
+          captions.forEach((c) => c.classList.remove('show'));
+          const activeSlide = swiper.slides[swiper.activeIndex];
+          const cap = activeSlide?.querySelector('.caption');
+          if (cap) cap.classList.add('show');
+          navSlider.slideTo(Math.max(0, swiper.realIndex - (navSlidesPerView - 1)));
+        },
+        progress(swiper: InstanceType<typeof Swiper>) {
+          for (let i = 0; i < swiper.slides.length; i++) {
+            const slideEl = swiper.slides[i];
+            const slideProgress = (slideEl as unknown as { progress?: number }).progress ?? 0;
+            const innerOffset = swiper.width * interleaveOffset;
+            const innerTranslate = slideProgress * innerOffset;
+            const bg = slideEl.querySelector<HTMLElement>('.slide-bgimg');
+            if (bg) bg.style.transform = `translateX(${innerTranslate}px)`;
+          }
+        },
+        touchStart(swiper: InstanceType<typeof Swiper>) {
+          for (let i = 0; i < swiper.slides.length; i++) {
+            (swiper.slides[i] as HTMLElement).style.transition = '';
+          }
+        },
+        setTransition(swiper: InstanceType<typeof Swiper>, transition: number) {
+          const speed = transition;
+          for (let i = 0; i < swiper.slides.length; i++) {
+            (swiper.slides[i] as HTMLElement).style.transition = `${speed}ms`;
+            const bg = swiper.slides[i].querySelector<HTMLElement>('.slide-bgimg');
+            if (bg) bg.style.transition = `${speed}ms`;
+          }
+        },
+      },
+    };
+
+    const navSlidesPerView = 5;
+    const navSliderOptions = {
+      loop: true,
+      loopAdditionalSlides: 10,
+      speed: 1000,
+      spaceBetween: 5,
+      slidesPerView: navSlidesPerView,
+      centeredSlides: false,
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+      direction: 'vertical' as const,
+      modules: [Controller],
+      on: {
+        init(swiper: InstanceType<typeof Swiper>) {
+          swiper.el.classList.remove('loading');
+        },
+        imagesReady(swiper: InstanceType<typeof Swiper>) {
+          swiper.el.classList.remove('loading');
+        },
+        click() {
+          mainSlider.autoplay?.stop();
+        },
+      },
+    };
+
+    const mainSlider = new Swiper(mainEl, mainSliderOptions);
+    const navSlider = new Swiper(navEl, navSliderOptions);
+
+    mainSlider.controller.control = navSlider;
+    navSlider.controller.control = mainSlider;
+
+    navSlider.slideTo(Math.max(0, mainSlider.realIndex - (navSlidesPerView - 1)));
+
+    const activeCaption = mainEl.querySelector('.caption');
+    if (activeCaption) activeCaption.classList.add('show');
+  });
+</script>

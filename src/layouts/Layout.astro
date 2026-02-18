@@ -1,0 +1,55 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../styles/turmet-section.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Turmet - Explore The World' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="main-page-area2">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      (function () {
+        function initWOW() {
+          var wowEls = document.querySelectorAll('.wow');
+          if (!wowEls.length) return;
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                el.classList.add('animated');
+                var delay = el.getAttribute('data-wow-delay');
+                if (delay) el.style.animationDelay = delay;
+                observer.unobserve(el);
+              });
+            },
+            { rootMargin: '0px 0px -40px 0px', threshold: 0 }
+          );
+          wowEls.forEach(function (el) { observer.observe(el); });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWOW);
+        else initWOW();
+      })();
+    </script>
+  </body>
+</html>

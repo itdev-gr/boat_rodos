@@ -1,0 +1,113 @@
+---
+/**
+ * Top Location Section - "Our Top Location For You Property"
+ * Export to other project: copy this file to src/components/, ensure turmet-section.css
+ * (or the new-destination-* / section-title-area rules) and Bootstrap + Bootstrap Icons
+ * are loaded, and copy public/assets/img/destination/new/ images (or set destinationContent img paths).
+ */
+const placeholderImg = 'https://placehold.co/420x500/252525/ffffff?text=Location';
+const destinationContent = [
+  { img: '/assets/img/destination/new/01.jpg', location: 'New Zealand', title: 'Hotel 1' },
+  { img: '/assets/img/destination/new/02.jpg', location: 'The Amazon', title: 'Hotel 1' },
+  { img: '/assets/img/destination/new/03.jpg', location: 'Angel Falls, Venezuela', title: 'Hotel 1' },
+  { img: '/assets/img/destination/new/04.jpg', location: 'The great wall of china', title: 'Hotel 1' },
+];
+---
+<section class="new-destination-section fix section-padding">
+  <div class="container">
+    <div class="section-title-area">
+      <div class="section-title">
+        <span class="sub-title wow fadeInUp">Our Destination</span>
+        <h2 class="wow fadeInUp" data-wow-delay=".5s">
+          Our Top Location For <br /> You Property
+        </h2>
+      </div>
+      <a href="/destination" class="theme-btn">
+        Learn More <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+    <div class="new-destination-wrapper top-location-scroll">
+      <div class="top-location-track" role="list">
+        {destinationContent.map((item) => (
+          <div class="top-location-card" role="listitem">
+            <div class="new-destination-items">
+              <div class="thumb">
+                <img src={item.img} alt={item.location} />
+                <div class="content">
+                  <div class="title-text">
+                    <h3>
+                      <a href="/destination/destination-details">{item.location}</a>
+                    </h3>
+                    <p>{item.title}</p>
+                  </div>
+                  <a href="/destination/destination-details" class="icon" aria-label={`View ${item.location}`}>
+                    <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .top-location-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: -40%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  @media (max-width: 1399px) {
+    .top-location-scroll {
+      margin-right: -20%;
+    }
+  }
+  @media (max-width: 1199px) {
+    .top-location-scroll {
+      margin-right: 0;
+    }
+  }
+  .top-location-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+  }
+  .top-location-card {
+    flex: 0 0 auto;
+    width: calc(25% - 18px);
+    min-width: 280px;
+    scroll-snap-align: start;
+  }
+  @media (max-width: 1199px) {
+    .top-location-card {
+      width: calc(33.333% - 16px);
+      min-width: 260px;
+    }
+  }
+  @media (max-width: 575px) {
+    .top-location-card {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+  .top-location-card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 420 / 500;
+  }
+</style>
+
+<script define:vars={{ placeholderImg }}>
+  document.querySelectorAll('.new-destination-section .thumb img').forEach((img) => {
+    img.addEventListener('error', function () {
+      this.src = placeholderImg;
+    });
+  });
+</script>

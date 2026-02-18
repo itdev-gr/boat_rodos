@@ -1,0 +1,33 @@
+---
+const destinations = [
+  { image: '/assets/img/destination/14.jpg', title: 'Rodos Town', href: '/rodos-boat-tours' },
+  { image: '/assets/img/destination/15.jpg', title: 'Lindos', href: '/rodos-boat-tours' },
+  { image: '/assets/img/destination/16.jpg', title: 'Anthony Quinn Bay', href: '/private-boat-tours' },
+  { image: '/assets/img/destination/17.jpg', title: 'Symi', href: '/rodos-boat-cruises' },
+];
+---
+<section class="popular-destination-section section-padding bg-sky-50">
+  <div class="container">
+    <div class="section-title-area">
+      <div class="section-title wow fadeInUp" data-wow-delay=".1s">
+        <span class="sub-title">Our Destination</span>
+        <h2>Our Top Location For<br />You Property</h2>
+      </div>
+      <a href="/rodos-boat-tours" class="theme-btn">Learn More <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="top-location-cards">
+      {destinations.map((d, i) => (
+        <a href={d.href} class={`top-location-card wow fadeInUp`} data-wow-delay={`${0.1 + i * 0.1}s`}>
+          <div class="top-location-card-image" style={`background-image: url('${d.image}')`}></div>
+          <div class="top-location-card-overlay">
+            <div class="top-location-card-text">
+              <h3 class="top-location-card-title">{d.title}</h3>
+              <span class="top-location-card-meta">Hotel 1</span>
+            </div>
+            <span class="location-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
