@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us - Boat Rodos">
+  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/charter-bases-visual.png')">
+    <div class="container custom-container-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <div class="sub-title">Get in touch</div>
+            <h1>Contact Us</h1>
+            <p>We would love to hear from you. Reach out for bookings, questions or a custom quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-24 bg-sky-50">
+    <div class="container">
+      <div class="max-w-5xl mx-auto">
+        <div class="relative rounded-3xl overflow-hidden" style="box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);">
+
+          <!-- Dark left panel with contact info -->
+          <div class="flex flex-col lg:flex-row">
+            <div class="w-full lg:w-5/12 relative p-10 sm:p-14 text-white" style="background: linear-gradient(135deg, #0A1F24 0%, #113D48 50%, #1CA8CB 100%);">
+              <div class="relative z-10">
+                <h2 class="text-3xl font-bold mb-3" style="font-family: 'Manrope', sans-serif;">Let's Talk</h2>
+                <p class="text-white/70 text-base mb-12 leading-relaxed">Reach out and let us craft your perfect sea experience.</p>
+
+                <div class="flex flex-col gap-10">
+                  <!-- Phone -->
+                  <div class="flex items-center gap-5">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-lg">
+                      <i class="bi bi-telephone"></i>
+                    </div>
+                    <div>
+                      <p class="text-white/50 text-xs uppercase tracking-widest mb-1">Call Us</p>
+                      <a href="tel:+256214203215" class="block text-white hover:text-white/80 transition-colors">+256 214 203 215</a>
+                      <a href="tel:+10987654321" class="block text-white hover:text-white/80 transition-colors">+1098 765 4321</a>
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="flex items-center gap-5">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-lg">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div>
+                      <p class="text-white/50 text-xs uppercase tracking-widest mb-1">Email</p>
+                      <a href="mailto:Info@Touron.Com" class="text-white hover:text-white/80 transition-colors">Info@Touron.Com</a>
+                    </div>
+                  </div>
+
+                  <!-- Address -->
+                  <div class="flex items-center gap-5">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-lg">
+                      <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div>
+                      <p class="text-white/50 text-xs uppercase tracking-widest mb-1">Visit Us</p>
+                      <p class="text-white">9550 Bolsa Ave #126,<br />United States</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Social icons -->
+                <div class="flex gap-4 mt-14">
+                  <a href="#" class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0A1F24] transition-all duration-300" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="#" class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0A1F24] transition-all duration-300" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" class="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0A1F24] transition-all duration-300" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+
+              <!-- Decorative circles -->
+              <div class="absolute -bottom-20 -right-20 w-56 h-56 rounded-full border border-white/10"></div>
+              <div class="absolute -bottom-10 -right-10 w-36 h-36 rounded-full border border-white/10"></div>
+            </div>
+
+            <!-- White right panel with form -->
+            <div class="w-full lg:w-7/12 bg-white p-10 sm:p-14">
+              <h2 class="text-2xl font-bold mb-1" style="color: var(--header); font-family: 'Manrope', sans-serif;">Request a Quote</h2>
+              <p class="text-sm mb-10" style="color: var(--text);">Fill in your details and we will get back to you within 24 hours.</p>
+
+              <form class="flex flex-col gap-6">
+                <div class="flex flex-col sm:flex-row gap-6">
+                  <div class="w-full sm:w-1/2">
+                    <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors placeholder:text-gray-300"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div class="w-full sm:w-1/2">
+                    <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors placeholder:text-gray-300"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-6">
+                  <div class="w-full sm:w-1/2">
+                    <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Phone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors placeholder:text-gray-300"
+                      placeholder="+30 XXX XXX XXXX"
+                    />
+                  </div>
+                  <div class="w-full sm:w-1/2">
+                    <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Service</label>
+                    <select
+                      name="service"
+                      class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors"
+                      style="color: var(--text);"
+                    >
+                      <option value="" disabled selected>Select a service</option>
+                      <option value="rodos-rent-boat">Rodos Rent Boat</option>
+                      <option value="rodos-boat-tours">Rodos Boat Tours</option>
+                      <option value="private-boat-tours">Private Boat Tours</option>
+                      <option value="rodos-boat-cruises">Rodos Boat Cruises</option>
+                      <option value="rodos-charter">Rodos Charter</option>
+                      <option value="rodos-mise">Rodos MISE</option>
+                      <option value="rodos-tender-boat">Rodos Tender Boat</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Preferred Date</label>
+                  <input
+                    type="date"
+                    name="date"
+                    class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors"
+                    style="color: var(--text);"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs uppercase tracking-widest font-semibold mb-2" style="color: var(--header);">Message</label>
+                  <textarea
+                    name="message"
+                    rows="4"
+                    required
+                    class="w-full px-0 py-3 bg-transparent text-base outline-none border-b-2 border-gray-200 focus:border-[#1CA8CB] transition-colors resize-none placeholder:text-gray-300"
+                    placeholder="Tell us about your ideal experience..."
+                  ></textarea>
+                </div>
+
+                <div class="mt-4">
+                  <button
+                    type="submit"
+                    class="w-full sm:w-auto px-10 py-4 rounded-full text-white font-semibold text-base tracking-wide transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
+                    style="background: linear-gradient(135deg, #113D48 0%, #1CA8CB 100%);"
+                  >
+                    Send Request <i class="bi bi-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

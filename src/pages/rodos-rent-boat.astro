@@ -2,61 +2,68 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Rodos Rent Boat - Turmet">
-  <section class="hero-section-2">
-    <div class="hero-2 bg-cover" data-background="/assets/img/hero/hero2.jpg">
-      <div class="container custom-container-3">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="hero-content">
-              <div class="sub-title wow fadeInUp">Rodos</div>
-              <h1 class="wow fadeInUp" data-wow-delay=".2s">Rodos Rent Boat</h1>
-              <p class="wow fadeInUp" data-wow-delay=".4s">
-                Rent a boat in Rhodes and explore the coast at your own pace. Choose from a range of vessels for your perfect day on the water.
-              </p>
-            </div>
+<Layout title="Rodos Rent Boat - Boat Rodos">
+  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/charter-bases-visual.png')">
+    <div class="container custom-container-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <div class="sub-title">Services</div>
+            <h1>Rodos Rent Boat</h1>
+            <p>Rent your own boat and explore the stunning coastline of Rhodes at your own pace.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-padding bg-sky-50">
+  <section class="py-20 bg-sky-50">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <div class="section-title text-center mb-5">
-            <span class="sub-title">Our Service</span>
-            <h2>Boat rental in Rhodes</h2>
+      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div class="w-full lg:w-1/2 wow fadeInUp">
+          <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+            <img src="/assets/img/charter-bases-visual.png" alt="Rodos Rent Boat" class="w-full h-[22rem] sm:h-[26rem] object-cover" />
           </div>
-          <p class="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </div>
+        <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">Rent a Boat in Rhodes</h2>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--text);">
+            Choose from a wide range of vessels, from small motorboats to luxury yachts, and set sail for an unforgettable adventure on the crystal-clear waters of the Aegean Sea. Whether you are an experienced sailor or a first-time visitor, we have the perfect boat for you.
           </p>
-          <p class="mb-4">
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Discover the best spots around Rhodes by boat—from quiet coves to lively harbours. Our fleet is maintained to high standards so you can enjoy a safe and memorable experience.
-          </p>
-          <p>
-            Contact us for availability, pricing and to book your Rodos rent boat experience.
+          <p class="text-lg leading-relaxed" style="color: var(--text);">
+            Our fleet is regularly maintained and fully equipped with safety gear, navigation tools and everything you need for a comfortable day at sea. Flexible rental periods available from half-day to weekly charters.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container">
+      <div class="section-title-area mb-12">
+        <div class="section-title wow fadeInUp">
+          <span class="sub-title">Options</span>
+          <h2>Choose your style</h2>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-10 justify-center">
+        <a href="/rodos-rent-boat/licenses-free" class="group relative w-full md:w-1/2 h-[24rem] overflow-hidden rounded-2xl transition-transform duration-500 transform hover:scale-105 wow fadeInUp" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+          <img src="/assets/img/charter-bases-visual.png" alt="Licenses Free" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black opacity-30 z-10 group-hover:opacity-50 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 text-white">
+            <h3 class="text-3xl sm:text-4xl font-semibold text-center border-b-2 border-white pb-2"><strong>Licenses Free</strong></h3>
+            <p class="text-xl text-center mt-4">No boating license required. Easy to operate boats perfect for beginners and casual explorers.</p>
+          </div>
+        </a>
+        <a href="/rodos-rent-boat/boat-with-skipper" class="group relative w-full md:w-1/2 h-[24rem] overflow-hidden rounded-2xl transition-transform duration-500 transform hover:scale-105 wow fadeInUp" data-wow-delay=".2s" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+          <img src="/assets/img/charter-bases-visual.png" alt="Boat with Skipper" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black opacity-30 z-10 group-hover:opacity-50 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 text-white">
+            <h3 class="text-3xl sm:text-4xl font-semibold text-center border-b-2 border-white pb-2"><strong>Boat with Skipper</strong></h3>
+            <p class="text-xl text-center mt-4">Sit back and relax while our experienced skipper takes you to the best spots around Rhodes.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  (function () {
-    function loadBackgroundImages() {
-      const elements = document.querySelectorAll('[data-background]');
-      elements.forEach((el) => {
-        const url = el.getAttribute('data-background');
-        if (url && el instanceof HTMLElement) el.style.backgroundImage = `url('${url}')`;
-      });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadBackgroundImages);
-    } else {
-      loadBackgroundImages();
-    }
-  })();
-</script>

@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos Rent Boat',
+    text: 'Rent your own boat and explore the stunning coastline of Rhodes at your own pace. Choose from a wide range of vessels, from small motorboats to luxury yachts, and set sail for an unforgettable adventure on the crystal-clear waters of the Aegean Sea.',
+    href: '/rodos-rent-boat',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos Boat Tours',
+    text: 'Join one of our guided boat tours and discover hidden coves, secluded beaches and picturesque bays around Rhodes. Our experienced captains will take you to the best spots while sharing stories and local knowledge about the island.',
+    href: '/rodos-boat-tours',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Private Boat Tours',
+    text: 'Enjoy a fully private boat experience tailored to your wishes. Whether it is a romantic sunset cruise, a family day out or a celebration with friends, our private tours offer complete flexibility with a dedicated skipper and crew.',
+    href: '/private-boat-tours',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos Boat Cruises',
+    text: 'Embark on a full-day or half-day cruise along the coast of Rhodes. Swim in turquoise waters, enjoy freshly prepared meals on board and soak up the Mediterranean sun as you glide past ancient ruins and dramatic cliff faces.',
+    href: '/rodos-boat-cruises',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos Charter',
+    text: 'Charter a sailing yacht or catamaran for a multi-day voyage across the Dodecanese islands. Our charter fleet is fully equipped and maintained to the highest standards, giving you the freedom to create your own island-hopping itinerary.',
+    href: '/rodos-charter',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos MISE',
+    text: 'Professional maritime services for yachts and vessels visiting Rhodes. From provisioning and fueling to technical support and crew arrangements, we handle every detail so you can focus on enjoying your time at sea.',
+    href: '/rodos-mise',
+  },
+  {
+    image: '/assets/img/charter-bases-visual.png',
+    title: 'Rodos Tender Boat',
+    text: 'Fast and reliable tender boat transfers between your yacht and the shore. Available around the clock, our tender service ensures smooth and comfortable transportation for you and your guests at any hour.',
+    href: '/rodos-tender-boat',
+  },
+];
+---
+
+<Layout title="Our Services - Boat Rodos">
+  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/charter-bases-visual.png')">
+    <div class="container custom-container-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <div class="sub-title">What we offer</div>
+            <h1>Our Services</h1>
+            <p>
+              Explore our full range of boat rental, tour and charter services across Rhodes island and beyond.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {services.map((s, i) => (
+    <section class={`py-20 ${i % 2 === 0 ? 'bg-sky-50' : 'bg-white'}`}>
+      <div class="container">
+        <div class={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-16`}>
+          <div class="w-full lg:w-1/2 wow fadeInUp">
+            <a href={s.href} class="block overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+              <img
+                src={s.image}
+                alt={s.title}
+                class="w-full h-[22rem] sm:h-[26rem] object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </a>
+          </div>
+          <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">{s.title}</h2>
+            <p class="text-lg leading-relaxed mb-[2rem]" style="color: var(--text);">{s.text}</p>
+            <a href={s.href} class="theme-btn">
+              <span>Learn More <i class="bi bi-arrow-right"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+</Layout>
