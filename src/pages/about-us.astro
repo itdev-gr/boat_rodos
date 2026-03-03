@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const highlights = [
+  { icon: 'bi-compass', number: '7+', label: 'Services Offered' },
+  { icon: 'bi-people', number: '2000+', label: 'Happy Guests' },
+  { icon: 'bi-award', number: '15+', label: 'Years of Experience' },
+  { icon: 'bi-star', number: '4.9', label: 'Average Rating' },
+];
+
+const offerings = [
+  { icon: 'bi-key', title: 'Boat Rentals', text: 'License-free boats and skippered vessels for effortless exploration of the Rhodes coastline.', href: '/rodos-rent-boat' },
+  { icon: 'bi-signpost-split', title: 'Guided Tours', text: 'Expert-led boat tours to hidden coves, secluded beaches and iconic landmarks around the island.', href: '/rodos-boat-tours' },
+  { icon: 'bi-lock', title: 'Private Experiences', text: 'Fully customizable private charters for romantic getaways, celebrations and corporate events.', href: '/private-boat-tours' },
+  { icon: 'bi-water', title: 'Day Cruises', text: 'Full-day and half-day cruises with swimming, dining on board and visits to the best coastal spots.', href: '/rodos-boat-cruises' },
+  { icon: 'bi-globe-europe-africa', title: 'Yacht Charter', text: 'Multi-day sailing adventures across the Dodecanese islands with a fully equipped fleet.', href: '/rodos-charter' },
+  { icon: 'bi-gear-wide-connected', title: 'Maritime Services', text: 'Professional MISE and tender boat services for yachts visiting Rhodes — available around the clock.', href: '/rodos-mise' },
+];
+---
+
+<Layout title="About Us - Boat Rodos">
+  <!-- Hero -->
+  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/charter-bases-visual.png')">
+    <div class="container custom-container-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <div class="sub-title">Who we are</div>
+            <h1>About Boat Rodos</h1>
+            <p>Your trusted partner for unforgettable sea experiences in Rhodes and the Dodecanese islands.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-24 bg-sky-50">
+    <div class="container">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 wow fadeInUp">
+          <div class="relative">
+            <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+              <img src="/assets/img/charter-bases-visual.png" alt="About Boat Rodos" class="w-full h-[26rem] sm:h-[32rem] object-cover" />
+            </div>
+            <!-- Floating accent card -->
+            <div class="hidden sm:flex absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 items-center gap-4" style="box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div>
+                <p class="text-2xl font-bold" style="color: var(--header);">15+</p>
+                <p class="text-sm" style="color: var(--text);">Years at Sea</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
+          <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Our Story</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6" style="color: var(--header);">Born from a Passion<br />for the Sea</h2>
+          <p class="text-lg leading-relaxed mb-5" style="color: var(--text);">
+            Boat Rodos was founded with a simple mission: to share the breathtaking beauty of the Aegean with every guest who visits Rhodes. What began as a small family operation with a single boat has grown into a full-service maritime company offering everything from license-free rentals to luxury yacht charters.
+          </p>
+          <p class="text-lg leading-relaxed mb-5" style="color: var(--text);">
+            Our team of experienced skippers, marine engineers and hospitality professionals are dedicated to delivering safe, memorable and seamless experiences on the water. Every voyage is crafted with care, local expertise and a deep respect for the sea.
+          </p>
+          <p class="text-lg leading-relaxed" style="color: var(--text);">
+            Based in Rhodes Marina, we operate across the Dodecanese islands — from the turquoise bays of Symi to the volcanic shores of Nisyros. Whether you are seeking a quiet afternoon on the water or a week-long sailing adventure, we are here to make it happen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0A1F24 0%, #113D48 50%, #1CA8CB 100%);">
+    <div class="container relative z-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {highlights.map((h) => (
+          <div class="text-center wow fadeInUp">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full border border-white/20 flex items-center justify-center text-white text-2xl">
+              <i class={`bi ${h.icon}`}></i>
+            </div>
+            <p class="text-4xl sm:text-5xl font-bold text-white mb-2">{h.number}</p>
+            <p class="text-white/60 text-sm uppercase tracking-widest">{h.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <!-- Decorative circles -->
+    <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-white/5"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full border border-white/5"></div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="py-24 bg-white">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-16 wow fadeInUp">
+        <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">What We Offer</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">Everything You Need<br />on the Water</h2>
+        <p class="text-lg" style="color: var(--text);">From a simple day rental to a full yacht charter with crew, we cover every aspect of your maritime experience.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {offerings.map((o, i) => (
+          <a href={o.href} class="group block bg-sky-50 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 wow fadeInUp" data-wow-delay={`${0.1 * i}s`}>
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-white text-xl mb-6 transition-transform duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+              <i class={`bi ${o.icon}`}></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--header);">{o.title}</h3>
+            <p class="leading-relaxed mb-4" style="color: var(--text);">{o.text}</p>
+            <span class="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300" style="color: var(--theme);">
+              Explore <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-24 bg-sky-50">
+    <div class="container">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 wow fadeInUp">
+          <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+            <img src="/assets/img/charter-bases-visual.png" alt="Why Choose Boat Rodos" class="w-full h-[26rem] sm:h-[32rem] object-cover" />
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
+          <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Why Boat Rodos</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-8" style="color: var(--header);">Built on Trust,<br />Driven by Excellence</h2>
+
+          <div class="flex flex-col gap-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white text-sm mt-1" style="background-color: var(--theme);">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold mb-1" style="color: var(--header);">Safety First</h4>
+                <p style="color: var(--text);">Every vessel in our fleet is fully insured, regularly inspected and equipped with the latest safety gear and navigation systems.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white text-sm mt-1" style="background-color: var(--theme);">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold mb-1" style="color: var(--header);">Local Expertise</h4>
+                <p style="color: var(--text);">Our skippers are born and raised in the Dodecanese. They know every hidden beach, every safe anchorage and every sunset viewpoint.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white text-sm mt-1" style="background-color: var(--theme);">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold mb-1" style="color: var(--header);">Tailored Experiences</h4>
+                <p style="color: var(--text);">No two trips are the same. We work with you to design a voyage that matches your pace, your interests and your budget.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white text-sm mt-1" style="background-color: var(--theme);">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold mb-1" style="color: var(--header);">24/7 Support</h4>
+                <p style="color: var(--text);">From the moment you book to the moment you step off the boat, our team is available around the clock to assist you.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0A1F24 0%, #113D48 100%);">
+    <div class="container relative z-10 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 wow fadeInUp">Ready to Set Sail?</h2>
+      <p class="text-lg text-white/70 mb-10 max-w-xl mx-auto wow fadeInUp" data-wow-delay=".1s">Get in touch with our team and let us plan your perfect day on the Aegean Sea.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center wow fadeInUp" data-wow-delay=".2s">
+        <a href="/contact" class="theme-btn">
+          <span>Request a Quote <i class="bi bi-arrow-right"></i></span>
+        </a>
+        <a href="/services" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white/30 text-white font-semibold transition-all duration-300 hover:bg-white hover:text-[#0A1F24]">
+          View All Services <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full border border-white/5"></div>
+    <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full border border-white/5"></div>
+  </section>
+</Layout>
