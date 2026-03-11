@@ -89,11 +89,10 @@
 
     function onScroll() {
       const currentScrollPos = window.scrollY;
-      headerEl.classList.remove('cs-gescout_sticky', 'cs-gescout_show');
-      if (currentScrollPos > prevScrollPos) {
-        headerEl.classList.add('cs-gescout_sticky');
-      } else if (currentScrollPos !== 0) {
-        headerEl.classList.add('cs-gescout_show', 'cs-gescout_sticky');
+      if (currentScrollPos > 0) {
+        headerEl.classList.add('cs-gescout_sticky', 'cs-gescout_show');
+      } else {
+        headerEl.classList.remove('cs-gescout_sticky', 'cs-gescout_show');
       }
       prevScrollPos = currentScrollPos;
     }
