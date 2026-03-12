@@ -1,43 +1,254 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const mediumBoat = {
+  name: 'Nireus 4.90 Optima',
+  length: '4.90m',
+  capacity: '4 passengers',
+  engine: '15 HP',
+  price: 65,
+  features: ['Sun canopy', 'Cool box', 'GPS navigation', 'Anchor & lines'],
+};
+
+const largeBoat = {
+  name: 'Karel Paxos 170',
+  length: '5.00m',
+  capacity: '7 passengers',
+  engine: '30 HP',
+  price: 90,
+  features: ['Sun canopy', 'Cool box', 'GPS navigation', 'Anchor & lines', 'Extended deck space'],
+};
+
+const equipment = [
+  'Life jackets for all passengers',
+  'First aid kit & pharmacy',
+  'Cool box for drinks and snacks',
+  'GPS navigation system',
+  'Full insurance coverage',
+  'Sun canopy for shade',
+  'Detailed sea map of Rhodes',
+  'Anchor and mooring lines',
+  'Snorkeling gear available',
+  'Phone waterproof case',
+  'Fuel included in price',
+];
+
+const destinations = [
+  { name: 'Lindos Bay', desc: 'Iconic village with a stunning acropolis overlooking a turquoise bay.' },
+  { name: 'Stegna Beach', desc: 'A sheltered pebble beach with crystal-clear water and beachfront tavernas.' },
+  { name: 'Kalathos', desc: 'A quiet stretch of coastline perfect for swimming and snorkeling in peace.' },
+  { name: 'St. Paul\'s Bay & Vlicha', desc: 'A picture-perfect cove framed by dramatic cliffs and warm shallow waters.' },
+  { name: 'Agathi Beach', desc: 'A golden sandy beach near Haraki, ideal for a relaxed afternoon stop.' },
+  { name: 'Red Sand Beach', desc: 'A unique red-hued shoreline surrounded by striking volcanic rock formations.' },
+];
 ---
 
-<Layout title="Licenses Free - Rodos Rent Boat">
-  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/charter-bases-visual.png')">
+<Layout title="License-Free Boat Rental - Rodos Rent Boat">
+  <!-- Hero -->
+  <section class="hero-2 bg-cover" style="background-image: url('/assets/img/rent-boat-1.jpg')">
     <div class="container custom-container-3">
       <div class="row">
         <div class="col-lg-8">
           <div class="hero-content">
             <div class="sub-title">Rodos Rent Boat</div>
-            <h1>Licenses Free</h1>
-            <p>No boating license required. Easy to operate boats perfect for everyone.</p>
+            <h1>License-Free Boat Rental</h1>
+            <p>Greek maritime law allows boats up to 30 HP to be operated without any license — making it easy for everyone to enjoy the sea.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-20 bg-sky-50">
+  <!-- Why No License -->
+  <section class="py-24 bg-sky-50">
     <div class="container">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         <div class="w-full lg:w-1/2 wow fadeInUp">
-          <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
-            <img src="/assets/img/charter-bases-visual.png" alt="Licenses Free Boats" class="w-full h-[22rem] sm:h-[26rem] object-cover" />
+          <div class="relative">
+            <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+              <img src="/assets/img/rent-boat-1.jpg" alt="License-Free Boat Rental Rhodes" class="w-full h-[26rem] sm:h-[32rem] object-cover" />
+            </div>
+            <!-- Floating accent card -->
+            <div class="hidden sm:flex absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 items-center gap-4" style="box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+                <i class="bi bi-card-checklist"></i>
+              </div>
+              <div>
+                <p class="text-2xl font-bold" style="color: var(--header);">No License</p>
+                <p class="text-sm" style="color: var(--text);">Required by Law</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">No License Needed</h2>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--text);">
-            Our license-free boats are designed for easy handling and are perfect for beginners and casual explorers. Simply hop on, follow a brief safety briefing and you are ready to discover the coastline of Rhodes on your own terms.
+          <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Why No License?</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6" style="color: var(--header);">Greek Law Makes<br />It Easy</h2>
+          <p class="text-lg leading-relaxed mb-5" style="color: var(--text);">
+            According to Greek maritime regulations, boats with engines up to 30 horsepower can be operated without a boating license. This means you can enjoy the freedom of exploring the Rhodes coastline without any prior boating certification or experience.
           </p>
-          <p class="text-lg leading-relaxed mb-6" style="color: var(--text);">
-            Available in various sizes for couples, families and small groups. All boats come equipped with sun canopy, cooler box, snorkeling gear and a detailed map of the best nearby beaches and swimming spots.
+          <p class="text-lg leading-relaxed mb-5" style="color: var(--text);">
+            Before you set off, our team provides a thorough safety briefing covering boat controls, navigation basics, local sea conditions and the best routes to take. We make sure you feel completely confident before you leave the dock.
           </p>
-          <a href="/contact" class="theme-btn">
-            <span>Book Now <i class="bi bi-arrow-right"></i></span>
-          </a>
+          <p class="text-lg leading-relaxed" style="color: var(--text);">
+            All our boats are fully compliant with Greek maritime safety standards, carry all required safety equipment and are covered by comprehensive insurance for your peace of mind.
+          </p>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Fleet Cards -->
+  <section class="py-24 bg-white">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-16 wow fadeInUp">
+        <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Our Fleet</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">Choose Your Boat</h2>
+        <p class="text-lg" style="color: var(--text);">Two sizes available — both license-free and fully equipped for a great day at sea.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {[mediumBoat, largeBoat].map((boat, i) => (
+          <div class="bg-sky-50 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl wow fadeInUp" data-wow-delay={`${0.2 * i}s`}>
+            <div class="overflow-hidden">
+              <img src={i === 0 ? '/assets/img/rent-boat-1.jpg' : '/assets/img/rent-boat-aerial.jpg'} alt={boat.name} class="w-full h-64 object-cover" />
+            </div>
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-2xl font-bold" style="color: var(--header);">{boat.name}</h3>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold text-white" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+                  <i class="bi bi-check-circle"></i> Available
+                </span>
+              </div>
+              <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="text-center p-3 bg-white rounded-xl">
+                  <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text);">Length</p>
+                  <p class="font-bold" style="color: var(--header);">{boat.length}</p>
+                </div>
+                <div class="text-center p-3 bg-white rounded-xl">
+                  <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text);">Capacity</p>
+                  <p class="font-bold" style="color: var(--header);">{boat.capacity}</p>
+                </div>
+                <div class="text-center p-3 bg-white rounded-xl">
+                  <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text);">Engine</p>
+                  <p class="font-bold" style="color: var(--header);">{boat.engine}</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                {boat.features.map((f: string) => (
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-white rounded-full text-sm" style="color: var(--text);">
+                    <i class="bi bi-check-lg" style="color: var(--theme);"></i> {f}
+                  </span>
+                ))}
+              </div>
+              <div class="flex items-end justify-between">
+                <div>
+                  <p class="text-3xl font-bold" style="color: var(--theme);">€{boat.price}<span class="text-base font-normal" style="color: var(--text);">/hour</span></p>
+                  <p class="text-sm mt-1" style="color: var(--text);">+ €10/hr with skipper</p>
+                </div>
+                <a href="/contact" class="theme-btn">
+                  <span>Book Now <i class="bi bi-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="py-24 bg-sky-50">
+    <div class="container">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="w-full lg:w-1/2 wow fadeInUp">
+          <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">What's Included</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-8" style="color: var(--header);">Everything You Need<br />on Board</h2>
+          <div class="flex flex-col gap-4">
+            {equipment.map((item) => (
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style="background-color: var(--theme);">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <p class="font-medium" style="color: var(--text);">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".2s">
+          <div class="overflow-hidden rounded-2xl" style="box-shadow: rgb(56, 84, 107) -7px 7px 0px;">
+            <img src="/assets/img/rent-boat-aerial.jpg" alt="Boat Equipment" class="w-full h-[26rem] sm:h-[32rem] object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-24 bg-white">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-16 wow fadeInUp">
+        <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Simple Process</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">How It Works</h2>
+        <p class="text-lg" style="color: var(--text);">Four simple steps from booking to sailing.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { step: '01', icon: 'bi-cursor', title: 'Choose Your Boat', desc: 'Pick the boat size that suits your group and preferred rental duration.' },
+          { step: '02', icon: 'bi-shield-check', title: 'Safety Briefing', desc: 'Our team walks you through controls, navigation and local sea conditions.' },
+          { step: '03', icon: 'bi-compass', title: 'Set Sail', desc: 'Head out and explore the coastline at your own pace — no license needed.' },
+          { step: '04', icon: 'bi-flag', title: 'Return & Relax', desc: 'Bring the boat back to the dock and take home unforgettable memories.' },
+        ].map((s, i) => (
+          <div class="text-center wow fadeInUp" data-wow-delay={`${0.1 * i}s`}>
+            <div class="relative inline-block mb-6">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl mx-auto" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+                <i class={`bi ${s.icon}`}></i>
+              </div>
+              <span class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-white flex items-center justify-center text-xs font-bold" style="color: var(--theme); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">{s.step}</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--header);">{s.title}</h3>
+            <p class="leading-relaxed" style="color: var(--text);">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations -->
+  <section class="py-24 bg-sky-50">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-16 wow fadeInUp">
+        <span class="text-sm uppercase tracking-widest font-semibold mb-3 inline-block" style="color: var(--theme); font-family: 'Kalam', sans-serif;">Where to Go</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--header);">Popular Destinations</h2>
+        <p class="text-lg" style="color: var(--text);">Explore the most beautiful spots along the eastern coast of Rhodes.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {destinations.map((d, i) => (
+          <div class="bg-white rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 wow fadeInUp" data-wow-delay={`${0.1 * i}s`}>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white text-lg mb-5" style="background: linear-gradient(135deg, #113D48, #1CA8CB);">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--header);">{d.name}</h3>
+            <p class="leading-relaxed" style="color: var(--text);">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0A1F24 0%, #113D48 100%);">
+    <div class="container relative z-10 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 wow fadeInUp">Ready to Captain Your Own Boat?</h2>
+      <p class="text-lg text-white/70 mb-10 max-w-xl mx-auto wow fadeInUp" data-wow-delay=".1s">No license, no experience, no worries. Book your license-free boat rental today.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center wow fadeInUp" data-wow-delay=".2s">
+        <a href="/contact" class="theme-btn">
+          <span>Book Now <i class="bi bi-arrow-right"></i></span>
+        </a>
+        <a href="/rodos-rent-boat/boat-with-skipper" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-white/30 text-white font-semibold transition-all duration-300 hover:bg-white hover:text-[#0A1F24]">
+          Boat with Skipper <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full border border-white/5"></div>
+    <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full border border-white/5"></div>
   </section>
 </Layout>
