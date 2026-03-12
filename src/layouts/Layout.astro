@@ -27,6 +27,13 @@ const { title = 'Turmet - Explore The World' } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      gsap.registerPlugin(ScrollTrigger);
+      window.gsap = gsap;
+      window.ScrollTrigger = ScrollTrigger;
+    </script>
     <script is:inline>
       (function () {
         function initWOW() {
