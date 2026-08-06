@@ -1,0 +1,41 @@
+# https://rhodesrentaboat.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*?utm_
+Disallow: /*?ref=
+
+# AI/LLM crawlers — explicit allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block aggressive scrapers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+Sitemap: https://rhodesrentaboat.com/sitemap.xml

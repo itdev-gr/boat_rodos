@@ -8,9 +8,24 @@ import '../styles/turmet-section.css';
 
 interface Props {
   title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
 }
 
-const { title = 'Turmet - Explore The World' } = Astro.props;
+const {
+  title = 'Rhodes Rent a Boat | Boat Trips, Tours & Cruises Since 1998',
+  description = 'Local-led boat tours, license-free rentals, sailing trips and yacht charters in Rhodes, Greece. Operating from Mandraki Harbour since 1998. Book direct — no platform fees.',
+  canonical,
+  ogImage = '/assets/img/og-default.jpg',
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://rhodesrentaboat.com';
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : new URL(Astro.url.pathname, siteUrl).href.replace(/\/$/, '') || siteUrl;
 ---
 
 <!doctype html>
@@ -20,6 +35,134 @@ const { title = 'Turmet - Explore The World' } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    }
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Rhodes Rent a Boat" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="GR-81" />
+    <meta name="geo.placename" content="Rhodes" />
+    <meta name="geo.position" content="36.4497769;28.2197904" />
+    <meta name="ICBM" content="36.4497769, 28.2197904" />
+
+    <!-- Schema: Organization + LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": ["TravelAgency", "LocalBusiness"],
+      "@id": `${siteUrl}#organization`,
+      "name": "Rhodes Rent a Boat",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/assets/img/logo/white-logo.svg`,
+        "width": 200,
+        "height": 60
+      },
+      "description": "Local-led boat tours, license-free rentals, sailing trips and yacht charters in Rhodes, Greece. Operating from Mandraki Harbour since 1998.",
+      "telephone": "+306951666454",
+      "email": "info@rhodesrentaboat.com",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ionos Dragoumi 39",
+        "addressLocality": "Rhodes Town",
+        "addressRegion": "South Aegean",
+        "postalCode": "85100",
+        "addressCountry": "GR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.4497769,
+        "longitude": 28.2197904
+      },
+      "areaServed": [
+        { "@type": "Place", "name": "Rhodes, Greece" },
+        { "@type": "Place", "name": "Symi, Greece" },
+        { "@type": "Place", "name": "Lindos, Greece" },
+        { "@type": "Place", "name": "Dodecanese, Greece" }
+      ],
+      "hasMap": "https://www.google.com/maps/place/Rhodes+Rent+a+Boat/@36.4497769,28.2197904,17z",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "20:00",
+        "validFrom": "--05-01",
+        "validThrough": "--10-31"
+      }],
+      "sameAs": [
+        "https://www.facebook.com/RhodosYachts",
+        "https://www.instagram.com/rhodos_yachts/"
+      ],
+      "foundingDate": "1998",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Boat Experiences in Rhodes",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "url": `${siteUrl}/rodos-rent-boat`,
+            "itemOffered": {
+              "@type": "TouristTrip",
+              "name": "Self-Drive Boat Hire",
+              "description": "License-free self-drive boat rental in Rhodes — coastal boats with safety briefing, fuel and equipment included.",
+              "url": `${siteUrl}/rodos-rent-boat`
+            }
+          },
+          {
+            "@type": "Offer",
+            "url": `${siteUrl}/rodos-boat-tours`,
+            "itemOffered": {
+              "@type": "TouristTrip",
+              "name": "Rhodes Boat Tours",
+              "description": "Guided boat tours to Symi, Lindos, Anthony Quinn Bay and Kallithea Springs.",
+              "url": `${siteUrl}/rodos-boat-tours`
+            }
+          },
+          {
+            "@type": "Offer",
+            "url": `${siteUrl}/rodos-boat-cruises`,
+            "itemOffered": {
+              "@type": "TouristTrip",
+              "name": "Rhodes Boat Cruises",
+              "description": "All-inclusive day and sunset cruises with Greek BBQ, drinks and swimming stops.",
+              "url": `${siteUrl}/rodos-boat-cruises`
+            }
+          },
+          {
+            "@type": "Offer",
+            "url": `${siteUrl}/rodos-charter`,
+            "itemOffered": {
+              "@type": "TouristTrip",
+              "name": "Rhodes Yacht Charter",
+              "description": "Weekly bareboat and crewed sailing holidays for Dodecanese island-hopping.",
+              "url": `${siteUrl}/rodos-charter`
+            }
+          }
+        ]
+      }
+    })} />
   </head>
   <body class="main-page-area2">
     <Header />
